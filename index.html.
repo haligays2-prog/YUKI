@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YUKI STORE</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#07111f;color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ padding:22px;text-align:center;
+ background:#0c2038;
+ border-bottom:2px solid #00aaff;
+}
+header h1{color:#00bfff;margin:5px}
+nav{display:flex;justify-content:center;gap:18px;padding:15px;flex-wrap:wrap}
+a{color:#40caff;text-decoration:none}
+.hero{text-align:center;padding:40px 15px}
+.hero h2{font-size:30px}
+.hero span{color:#00bfff}
+.container{max-width:850px;margin:auto;padding:15px}
+.card{
+ background:#10243c;border:1px solid #17476b;
+ padding:20px;border-radius:14px;margin:15px 0;
+}
+button{
+ background:#009fe3;color:white;border:0;
+ padding:12px 20px;border-radius:8px;
+ font-weight:bold;cursor:pointer;
+}
+button:hover{background:#007bb5}
+input{
+ width:100%;padding:13px;margin:8px 0;
+ border-radius:8px;border:1px solid #27749e;
+ background:#071526;color:white;
+}
+.price{color:#00c5ff;font-weight:bold}
+footer{text-align:center;padding:25px;color:#91a8bd}
+</style>
+</head>
+<body>
+
+<header>
+<h1>❄ YUKI STORE</h1>
+<p>DIGITAL STORE • FAST SERVICE</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#produk">Produk</a>
+<a href="#pay">YUKI PAY</a>
+</nav>
+
+<section class="hero" id="home">
+<h2>WELCOME TO <span>YUKI STORE</span></h2>
+<p>One Store, All Digital Needs.</p>
+<p>Belanja produk digital dengan mudah!</p>
+</section>
+
+<main class="container">
+
+<section id="produk">
+<h2>⚡ KATALOG PRODUK</h2>
+
+<div class="card">
+<h3>📱 Pulsa & Paket Internet</h3>
+<p>Pulsa, kuota internet dan masa aktif.</p>
+<p class="price">Harga menyesuaikan produk</p>
+<button onclick="order('Pulsa dan Paket Internet')">Pesan Sekarang</button>
+</div>
+
+<div class="card">
+<h3>🖥 Hosting & Panel</h3>
+<p>Hosting, panel, domain dan kebutuhan server.</p>
+<button onclick="order('Hosting dan Panel')">Pesan Sekarang</button>
+</div>
+
+<div class="card">
+<h3>📢 Social Media Service</h3>
+<p>Followers, likes, views dan layanan sosmed.</p>
+<button onclick="order('Social Media Service')">Pesan Sekarang</button>
+</div>
+
+<div class="card">
+<h3>🔋 Token Listrik</h3>
+<p>Pembelian token listrik digital.</p>
+<button onclick="order('Token Listrik')">Pesan Sekarang</button>
+</div>
+</section>
+
+<section id="pay">
+<h2>💳 YUKI PAY</h2>
+<div class="card">
+<h3>Pembayaran Pesanan</h3>
+<p>Isi informasi pembayaran di bawah ini.</p>
+
+<input id="nama" placeholder="Nama pembeli">
+<input id="produk" placeholder="Nama produk">
+<input id="harga" placeholder="Nominal pembayaran (Rp)">
+
+<button onclick="bayar()">Konfirmasi Pembayaran</button>
+
+<p id="hasil"></p>
+</div>
+
+<div class="card">
+<h3>QRIS PAYMENT</h3>
+<p>Silakan hubungi admin untuk meminta QRIS resmi dan petunjuk pembayaran.</p>
+<p>⚠ Pembayaran diverifikasi secara manual oleh admin.</p>
+</div>
+</section>
+
+</main>
+
+<footer>
+<h3>YUKI STORE × YUKI PAY</h3>
+<p>© 2026 YUKI STORE. All Rights Reserved.</p>
+<p>Digital Store Indonesia</p>
+</footer>
+
+<script>
+// GANTI dengan nomor WhatsApp admin.
+// Gunakan kode negara 62 tanpa tanda +.
+const ADMIN_WA = "GANTI_NOMOR_WA";
+
+function order(item){
+ document.getElementById("produk").value=item;
+ document.getElementById("pay").scrollIntoView();
+}
+
+function bayar(){
+ const nama=document.getElementById("nama").value;
+ const produk=document.getElementById("produk").value;
+ const harga=document.getElementById("harga").value;
+
+ if(!nama||!produk||!harga){
+  alert("Lengkapi semua data!");
+  return;
+ }
+
+ if(ADMIN_WA==="GANTI_NOMOR_WA"){
+  alert("Admin harus mengatur nomor WhatsApp terlebih dahulu.");
+  return;
+ }
+
+ const pesan=
+ `Halo Admin YUKI STORE\nNama: ${nama}\nProduk: ${produk}\nNominal: Rp ${harga}\nSaya ingin melakukan pembayaran.`;
+
+ window.open(
+ "https://wa.me/"+ADMIN_WA+"?text="+encodeURIComponent(pesan),
+ "_blank"
+ );
+}
+</script>
+
+</body>
+</html>
